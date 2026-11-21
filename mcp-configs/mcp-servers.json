@@ -10,6 +10,16 @@
       "args": ["/absolute/path/to/ito-cloud-runtime/cli/ito-compute-cli/dist/bin/ito-mcp.js"],
       "description": "Opt-in local Itô compute MCP. The canonical package is unpublished and must be built from Ito-Markets/ito-cloud-runtime/cli/ito-compute-cli. Exposes ito_auth, ito_find, ito_status, and ito_accept. ito_auth validates existing credentials; it does not start device login. Use ecc ito login [--no-browser] for device authorization, which stores tokens in macOS Keychain by default; explicit file fallback must retain owner-only settings. ECC itself performs no browser automation. ITO_API_KEY is forwarded directly to auth, find, status, and accept when configured; ITO_AUTH_MODE=legacy is not required."
     },
+    "ozeaon-task-manager": {
+      "command": "node",
+      "args": ["/absolute/path/to/engineering-agent-skills/integrations/opencode/task-manager-mcp/src/server.mjs"],
+      "env": {
+        "TASK_MANAGER_API_URL": "YOUR_TASK_MANAGER_API_URL_HERE",
+        "TASK_MANAGER_API_TOKEN": "YOUR_TASK_MANAGER_TOKEN_HERE",
+        "TASK_MANAGER_TOKEN_SCOPES": "read:tasks write:tasks"
+      },
+      "description": "Ozeaon Task Manager — search_tasks, get_task, claim_task, add_progress_update, record_blocker, request_review for assigned engineering work. Set TASK_MANAGER_API_URL to the agent API endpoint provided by Ozeaon onboarding. Requires an individually issued, scoped token (read:tasks write:tasks); never share credentials across agents. Adapter source: ozeaon/engineering-agent-skills integrations/opencode/task-manager-mcp (local stdio; supports newline-delimited and Content-Length JSON-RPC)."
+    },
     "jira": {
       "command": "uvx",
       "args": ["mcp-atlassian==0.21.0"],
